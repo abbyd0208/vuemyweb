@@ -31,7 +31,7 @@ export default {
   methods:{
     signin(){
       var vm = this;
-      const api = `${process.env.APIPATH}/signin`;
+      const api = `${process.env.APIPATH}/admin/signin`;
       this.$http.post(api,vm.user).then((response) => {
         console.log(response.data);
         if (response.data.success){
