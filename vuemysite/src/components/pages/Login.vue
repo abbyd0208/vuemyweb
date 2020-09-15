@@ -33,8 +33,14 @@ export default {
       var vm = this;
       const api = `${process.env.APIPATH}/signin`;
       this.$http.post(api,vm.user).then((response) => {
-        console.log(response.data)
+        console.log(response.data);
+        if (response.data.success){
+          vm.$router.push('/');
+        }else{
+          alert('帳號或密碼錯誤')
+        }
       });
+
     }
   }
 }
