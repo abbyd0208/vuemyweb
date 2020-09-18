@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
-    <a href="#" @click.prevent="signout">登出！</a>
+    <!-- <router-link to="/login" >登入</router-link> -->
+     <a href="#" @click.prevent="signout">登出！</a>
+    <!-- <router-link to="/"> 首頁 </router-link> -->
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>

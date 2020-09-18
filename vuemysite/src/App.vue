@@ -1,6 +1,6 @@
 <template>
   <div id="app">
- 
+
     <router-view/>
 
   </div>
@@ -10,10 +10,10 @@
 export default {
   name: 'App',
   created(){
-    const api = `${process.env.APIPATH}/api/${process.env.COUSTOMPATH}/products`;
-    this.$http.get(api).then((response) => {
-      console.log(response.data)
-    });
+    // const api = `${process.env.APIPATH}/api/${process.env.COUSTOMPATH}/products`;
+    // this.$http.get(api).then((response) => {
+    //   console.log(response.data)
+    // });
   }
 }
 </script>
