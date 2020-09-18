@@ -29,7 +29,6 @@ router.beforeEach((to, from, next) => {
       console.log(response)
       if(response.data.success){
         next();
-        
       }{
         next({
           path:'/'
