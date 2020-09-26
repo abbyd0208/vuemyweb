@@ -17,14 +17,14 @@ export default {
   },
   methods:{
     signout(){
-       var vm = this;
-      const api = `${process.env.APIPATH}/logout`;
-      this.$http.post(api).then((response) => {
-        console.log(response.data);
-        if (response.data.success){
-          vm.$router.push('/login');
-        }
-      });
+        var vm = this;
+        const api = `${process.env.APIPATH}/logout`;
+        this.$http.post(api).then((response) => {
+          console.log(response.data);
+          if (response.data.success){
+            vm.$router.push('/login');
+          }
+        });
     }
   }
 }
