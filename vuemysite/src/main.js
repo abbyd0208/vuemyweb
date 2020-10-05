@@ -22,8 +22,6 @@ new Vue({
 router.beforeEach((to, from, next) => {
 // 判斷要到達的頁面是否帶有 requiresAuth  沒有就直接放行， 有的話要經過驗證的API
   if(to.meta.requiresAuth){
-
-    console.log('這裡需要驗證');
     // 接API
     const api = `${process.env.APIPATH}/api/user/check`;
     axios.post(api).then((response) => {
