@@ -6,6 +6,11 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+import $ from 'jquery'
+import 'bootstrap'
+// import $ 
+
+window.$ = $
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
