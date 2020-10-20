@@ -8,13 +8,17 @@ import VueAxios from 'vue-axios'
 
 import $ from 'jquery'
 import 'bootstrap'
-// import $ 
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
+
 
 window.$ = $
 
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
 axios.defaults.withCredentials = true;
+
+Vue.component('Loading',Loading)
 
 /* eslint-disable no-new */
 new Vue({

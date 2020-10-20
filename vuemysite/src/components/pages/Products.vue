@@ -1,5 +1,7 @@
 <template>
     <div>
+         <loading :active.sync="isLoading"></loading>
+
         <div class="text-right"><button class="btn btn-primary" @click="openModal(true)">建立新的商品</button></div>
         <table class="table mt-4">
             <thead>
@@ -52,8 +54,9 @@
                         </div>
                         <div class="form-group">
                         <label for="customFile">或 上傳圖片
-                            <i class="fas fa-spinner fa-spin"></i>
+                            <i class="fas fa-spinner fa-spin" v-if="isLoading"></i>
                         </label>
+
                         <input type="file" id="customFile" class="form-control"
                             ref="files" @change="uploadfile">
                         </div>
@@ -158,15 +161,18 @@ export default {
             products:[],
             tempProducts:{},
             isNew:false,
+            isLoading:false
         }
     },
     methods:{
         getProducts(){
             const vm = this;
             const api = `${process.env.APIPATH}/api/${process.env.COUSTOMPATH}/products`;
+            vm.isLoading = true;  //打開loading
             this.$http.get(api).then((response) => {
               console.log(response.data.products);
               vm.products = response.data.products
+              vm.isLoading = false;  //關閉loading
             });
         },
         openModal(isNew,item){
@@ -203,7 +209,6 @@ export default {
             });
         },
         openDelModal(item){
-            
             this.tempProducts = item;
             $("#delProductModal").modal('show');
         },
@@ -212,8 +217,7 @@ export default {
             let api = `${process.env.APIPATH}/api/${process.env.COUSTOMPATH}/admin/product/${vm.tempProducts.id}`;
             
             this.$http.delete(api).then((response) => {
-              console.log(response.data);
-            //   vm.products = response.data.products
+             
                 if(response.data.success){
                     $("#delProductModal").modal("hide");
                     console.log(response.data.message)
@@ -233,18 +237,19 @@ export default {
             formData.append('file-to-upload', uploadFile);
             const vm = this;
             const api = `${process.env.APIPATH}/api/${process.env.COUSTOMPATH}/admin/upload`;
+            this.isLoading = true;
             this.$http.post(api , formData ,{
                 headers:{
                     'Content-Type': 'multipart/form-data'
                 }
             }).then((response) => {
               console.log(response.data);
+
                 if(response.data.success){
+                    this.isLoading = false;
                     vm.$set(vm.tempProducts,'imageUrl',response.data.imageUrl)
                 }
             });
-            // console.log(this)
-
         }   
     },
     created(){
