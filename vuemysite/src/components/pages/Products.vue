@@ -248,12 +248,15 @@ export default {
                 if(response.data.success){
                     this.isLoading = false;
                     vm.$set(vm.tempProducts,'imageUrl',response.data.imageUrl)
+                }else{
+                     this.$bus.$emit('message:push',response.data.message,'danger')
                 }
             });
         }   
     },
     created(){
         this.getProducts();
+       
     }
 }
 </script>
