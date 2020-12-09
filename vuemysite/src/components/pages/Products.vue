@@ -32,6 +32,21 @@
                 </tr>
             </tbody>
         </table>
+
+        <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"  :class="{'disabled':!pagination.has_pre}">
+                <a class="page-link" :href="pagination.current_page -1"  @click.prevent="getProducts(pagination.current_page - 1)">Previous</a>
+                </li>
+            <li class="page-item" v-for="item in pagination.total_pages" :key="item"
+                :class="{'active':pagination.current_page == item}" >
+                <a class="page-link" href="#"  @click.prevent="getProducts(item)">{{item}}</a></li>
+            <li class="page-item"  :class="{'disabled':!pagination.has_next}" >
+                <a class="page-link" href="#"  @click.prevent="getProducts(pagination.current_page + 1)">Next</a>
+            </li>
+        </ul>
+        </nav>
+
         <!-- 新增產品的 modal -->
         <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -161,18 +176,20 @@ export default {
             products:[],
             tempProducts:{},
             isNew:false,
-            isLoading:false
+            isLoading:false,
+            pagination:{}
         }
     },
     methods:{
-        getProducts(){
+        getProducts(page = 1){
             const vm = this;
-            const api = `${process.env.APIPATH}/api/${process.env.COUSTOMPATH}/products`;
+            const api = `${process.env.APIPATH}/api/${process.env.COUSTOMPATH}/products?pages=${page}`;
             vm.isLoading = true;  //打開loading
             this.$http.get(api).then((response) => {
-              console.log(response.data.products);
+              console.log(response.data);
               vm.products = response.data.products
               vm.isLoading = false;  //關閉loading
+              vm.pagination = response.data.pagination
             });
         },
         openModal(isNew,item){
