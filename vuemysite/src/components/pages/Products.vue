@@ -17,8 +17,8 @@
                 <tr v-for="(item) in products" :key="item.id">
                     <td>{{item.category}}</td>
                     <td>{{item.title}}</td>
-                    <td class="text-right">{{item.origin_price}}</td>
-                    <td class="text-right">{{item.price}}</td>
+                    <td class="text-right">{{item.origin_price | currency}}</td>
+                    <td class="text-right">{{item.price | currency}}</td>
                     <td>
                         <span class="text-success" v-if="item.is_enabled">啟用</span>
                         <span class="text-success" v-else>啟用</span>

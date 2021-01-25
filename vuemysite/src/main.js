@@ -13,6 +13,7 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 
 
 import './bus';
+import currencyFilter from './filters/currency';
 
 window.$ = $
 
@@ -21,6 +22,7 @@ Vue.use(VueAxios, axios)
 axios.defaults.withCredentials = true;
 
 Vue.component('Loading',Loading)
+Vue.filter('currency',currencyFilter)
 
 /* eslint-disable no-new */
 new Vue({
