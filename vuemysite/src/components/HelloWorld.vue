@@ -1,8 +1,8 @@
 <template>
   <div class="hello">
-    <a href="#" @click.prevent="signout">登出！</a>
+    <a class="btn btn-dark" href="#" @click.prevent="signout">登出！</a>
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+ 
     <p>我是首頁啦！！</p>
   </div>
 </template>

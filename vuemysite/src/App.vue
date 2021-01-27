@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-
     <router-link class="btn btn-primary" to="/login/" role="button">登入</router-link>
     <router-link class="btn btn-secondary" to="/" role="button">首頁</router-link>
-
+    <router-link class="btn btn-secondary" to="/customer_orders" role="button">銷售頁</router-link>
     <router-view></router-view>
 
   </div>
@@ -18,6 +17,7 @@ export default {
     //   console.log(response.data)
     // });
   }
+  
 }
 </script>
 
