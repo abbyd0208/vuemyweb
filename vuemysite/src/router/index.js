@@ -5,6 +5,7 @@ import Login from '@/components/pages/Login'
 import Dashboard from '@/components/Dashboard'
 import Products from '@/components/pages/Products'
 import CustomerOrders from '@/components/pages/CustomerOrders'
+import Cuppon from '@/components/pages/Cuppon'
 
 
 Vue.use(Router)
@@ -31,6 +32,12 @@ export default new Router({
 					path: 'products',
 					name: 'Products',
 					component: Products,
+					meta: { requiresAuth: true }
+				},
+				{
+					path: 'cuppon',
+					name: 'cuppon',
+					component: Cuppon,
 					meta: { requiresAuth: true }
 				},
 			]
