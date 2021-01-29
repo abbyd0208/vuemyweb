@@ -34,7 +34,9 @@
             </div>
         </div>
 <hr>
-        <table class="table" style="max-width:500px; margin:0 auto;">
+
+<div class="row" style="max-width:500px; margin:0 auto;">
+  <table class="table" >
         <thead>
             <th></th>
             <th>品名</th>
@@ -77,6 +79,8 @@
             </button>
         </div>
         </div>
+</div>
+      
 
 
         <!-- 查看詳細產品的 modal -->
