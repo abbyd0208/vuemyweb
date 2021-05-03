@@ -143,6 +143,8 @@
             </div>
         </div>
 
+       
+
        <!-- 刪除產品的 modal -->
        <div class="modal fade" id="delProductModal" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
