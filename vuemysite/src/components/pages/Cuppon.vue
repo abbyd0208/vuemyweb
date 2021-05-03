@@ -127,7 +127,7 @@ export default {
         
         vm.tempCoupon = {};
       } else {
-        // 若為編輯，則把帶入的物件 用object.assign的方式 把每一個物件都變成一個獨立出來的物件
+        // 若為編輯，則把帶入的物件 用object.assign的方式 複製原本的物件
         vm.tempCoupon = Object.assign({}, item);
         const dateAndTime = new Date(vm.tempCoupon.due_date * 1000).toISOString().split('T');
         vm.due_date = dateAndTime[0];
